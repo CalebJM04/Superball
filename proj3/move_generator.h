@@ -1,0 +1,83 @@
+#pragma once
+
+#include "types.h"
+#include <vector>
+#include <string>
+
+/**
+ * Adds random pieces to empty cells on the board.
+ * @param state Current board state
+ * @param numCells Number of random cells to add
+ * @param colors String containing possible colors to choose from
+ * @param rows Number of rows in the board
+ * @param cols Number of columns in the board
+ * @return New board state with random cells added
+ */
+BoardState addRandomCells(const BoardState& state, 
+                         int numCells, 
+                         const std::string& colors, 
+                         int rows, 
+                         int cols);
+
+/**
+ * Simulates a swap move between two positions on the board.
+ * @param state Current board state
+ * @param r1 Row of first piece
+ * @param c1 Column of first piece
+ * @param r2 Row of second piece
+ * @param c2 Column of second piece
+ * @return New board state after the swap
+ */
+BoardState simulateSwap(const BoardState& state, 
+                       int r1, 
+                       int c1, 
+                       int r2, 
+                       int c2);
+
+/**
+ * Simulates scoring a group of connected pieces.
+ * Starting from the given position, removes all connected pieces of the same color.
+ * Goal cells become '*' when cleared, regular cells become '.'.
+ * 
+ * @param state Current board state
+ * @param startR Starting row position
+ * @param startC Starting column position
+ * @param rows Number of rows in the board
+ * @param cols Number of columns in the board
+ * @param isGoal Matrix indicating which cells are goal cells
+ * @return New board state after the scoring move
+ */
+BoardState simulateScoreMove(const BoardState& state, 
+                            int startR, 
+                            int startC, 
+                            int rows, 
+                            int cols,
+                            const std::vector<std::vector<bool>>& isGoal);
+
+/**
+ * Chooses the best move using expectimax search with sampling.
+ * Considers both swap and score moves, simulates random piece additions,
+ * and evaluates resulting positions.
+ * 
+ * Search process:
+ * 1. Generates all possible moves
+ * 2. Quick evaluation to prune clearly bad moves
+ * 3. Detailed sampling of promising moves
+ * 4. Returns move with highest expected value
+ * 
+ * @param state Current board state
+ * @param isGoal Matrix indicating which cells are goal cells
+ * @param minScore Minimum group size required for scoring
+ * @param rows Number of rows in the board
+ * @param cols Number of columns in the board
+ * @param colors String containing possible colors for random pieces
+ * @param samples Number of random samples to evaluate for each move (default 10)
+ * @return The chosen Move
+ */
+Move chooseMoveExpectimax(const BoardState& state, 
+                         const std::vector<std::vector<bool>>& isGoal,
+                         int minScore, 
+                         int rows, 
+                         int cols, 
+                         const std::string& colors, 
+                         int samples = 10);
