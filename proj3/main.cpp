@@ -79,7 +79,7 @@ int main(int argc, char** argv) {
     state.board = board;
 
     // Choose and output the best move
-    Move chosen = chooseMoveExpectimax(state, isGoal, minScore, rows, cols, colors, 5);
+    Move chosen = chooseMoveExpectimax(state, isGoal, minScore, rows, cols, colors, 300); // 500 was best
     
     // Output the chosen move
     if (chosen.type == SCORE) {
