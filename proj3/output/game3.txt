@@ -9,747 +9,1631 @@ B*......**
 ..g.......
 ..........
 
-Move is: SWAP 2 0 1 4
+Move is: SWAP 2 0 4 5
 
 Empty Cells: 70     Score: 0
 
 ..........
-....b.....
-P*......G*
+....p.....
+G*......G*
 **..b...*Y
-**...g..**
+**...b..**
 **......**
 p.gb......
 ........r.
 
-Move is: SWAP 3 4 6 2
+Move is: SWAP 2 8 6 3
 
 Empty Cells: 65     Score: 0
 
 ........r.
-...gb.....
-P*......G*
-**..g...*Y
-**...g..*Y
+...gp.....
+G*......B*
+**..b...*Y
+**...b..*Y
 **..r...**
-ppbb......
+ppgg......
 ........r.
 
-Move is: SWAP 2 0 6 2
+Move is: SWAP 1 3 6 1
 
 Empty Cells: 60     Score: 0
 
 .p......r.
-...gb...r.
-B*..b...G*
-**..g.r.*Y
-B*...g..*Y
+...pp...r.
+G*..b...B*
+**..b.r.*Y
+B*...b..*Y
 **..r...**
-pppb......
+pggg......
 ........r.
 
-Move is: SWAP 0 1 6 3
+Move is: SWAP 2 0 6 0
 
 Empty Cells: 55     Score: 0
 
-.b......r.
-...gb...r.
-B*..b...G*
-*B..g.r.*Y
-B*...g..*Y
+.p......r.
+...pp...r.
+P*..b...B*
+*B..b.r.*Y
+B*...b..*Y
 **..r.y.Y*
-pppp..b..b
+gggg..b..b
 ........r.
 
-Move is: SWAP 2 8 7 8
+Move is: SWAP 2 8 3 6
 
 Empty Cells: 50     Score: 0
 
-.b......r.
-...gb..gr.
-B*..b...R*
-RB..g.r.*Y
-B*...g..*Y
+.p......r.
+...pp..gr.
+P*..b...R*
+RB..b.b.*Y
+B*...b..*Y
 **..r.y.Y*
-pppp..b..b
-..b.r.b.g.
+gggg..b..b
+..b.r.b.r.
 
-Move is: SWAP 3 0 6 9
+Move is: SWAP 7 4 1 7
 
 Empty Cells: 45     Score: 0
 
-.bp.....r.
-...gb..gr.
-B*..b...R*
-BB..g.r.*Y
-B*..gg..*Y
+.pp.....r.
+...pp..rr.
+P*..b...R*
+RB..b.b.*Y
+B*..gb..*Y
 **..r.y.Y*
-pppp..b..r
-..b.rrbbgb
+gggg..b..b
+..b.grbbrb
 
-Move is: SWAP 5 4 1 7
+Move is: SWAP 7 2 7 8
 
 Empty Cells: 40     Score: 0
 
-.bp.p...r.
-...gb..rrg
-B*..b...R*
-BB..g.r.*Y
-B*.pgg..*Y
-**..g.ypY*
-pppp..b..r
-..byrrbbgb
+.pp.p...r.
+...pp..rrg
+P*..b...R*
+RB..b.b.*Y
+B*.pgb..*Y
+**..r.ypY*
+gggg..b..b
+..rygrbbbb
 
-Move is: SWAP 7 5 1 9
+Move is: SWAP 7 2 1 9
 
 Empty Cells: 35     Score: 0
 
-.bp.p.g.r.
-...gb..rrr
-B*..b..gRR
-BB.rg.r.*Y
-B*.pgg..*Y
-**..g.ypY*
-pppp.gb..r
-..byrgbbgb
+.pp.p.g.r.
+...pp..rrr
+P*..b..gRR
+RB.rb.b.*Y
+B*.pgb..*Y
+**..r.ypY*
+gggg.gb..b
+..gygrbbbb
 
 Move is: SCORE 2 9
 
 Empty Cells: 38     Score: 30
 
-.bp.p.gb..
-...gb...g.
-BY..b..g**
-BB.rg.r.*Y
-B*.pgg..*Y
-**..g.ypY*
-pppp.gb..r
-..byrgbbgb
+.pp.p.gb..
+...pp...g.
+PY..b..g**
+RB.rb.b.*Y
+B*.pgb..*Y
+**..r.ypY*
+gggg.gb..b
+..gygrbbbb
 
-Move is: SWAP 2 1 7 2
+Move is: SWAP 7 3 4 4
 
 Empty Cells: 33     Score: 30
 
-.bp.pbgb..
-...gb...g.
-BBy.br.g**
-BB.rg.r.*Y
-B*.pgg..*Y
-**r.gyypY*
-pppp.gb..r
-..yyrgbbgb
+.pp.pbgb..
+...pp...g.
+PYy.br.g**
+RB.rb.b.*Y
+B*.pyb..*Y
+**r.ryypY*
+gggg.gb..b
+..gggrbbbb
 
-Move is: SCORE 4 0
+Move is: SWAP 5 7 4 4
 
-Empty Cells: 35     Score: 45
+Empty Cells: 28     Score: 30
 
-ybp.pbgb..
-...gbg..g.
-**y.br.g**
-**.rg.r.*Y
-**.pgg..*Y
-**r.gyypY*
-pppp.gb..r
-.gyyrgbbgb
-
-Move is: SWAP 5 7 7 2
-
-Empty Cells: 30     Score: 45
-
-ybp.pbgb..
-...gbg..g.
-**y.br.g**
-G*.rg.ry*Y
-*Y.pgg..*Y
-**r.gyyyYY
-pppp.gb..r
-ygpyrgbbgb
+ypp.pbgb..
+...ppg..g.
+PYy.br.g**
+RB.rb.b.*Y
+B*.ppb..*Y
+**r.ryyyYY
+gggg.gb..b
+yggggrbbbb
 
 Move is: SCORE 5 9
 
-Empty Cells: 34     Score: 73
+Empty Cells: 32     Score: 58
 
-ybp.pbgbr.
-...gbg..g.
-**y.br.g**
-G*.rg.ry**
-*Y.pgg..**
-G*r.g...**
-pppp.gb.gr
-ygpyrgbbgb
+ypp.pbgb..
+...ppg..g.
+PYy.br.g**
+RB.rb.by**
+BY.ppb..**
+**r.r...**
+gggg.gb.gb
+yggggrbbbb
 
-Move is: SWAP 5 0 4 3
+Move is: SWAP 7 5 1 5
 
-Empty Cells: 29     Score: 73
+Empty Cells: 27     Score: 58
 
-ybp.pbgbr.
-p..gbg..g.
-**y.brpg**
-GB.rg.ry**
-*Y.ggg..**
-P*r.gr..**
-pppp.gbygr
-ygpyrgbbgb
+ypp.pbgbr.
+p..ppry.g.
+PYy.br.g**
+RB.rb.by**
+BY.ppb..**
+G*r.rr..**
+gggg.gb.gb
+ygggggbbbb
 
 Move is: SCORE 5 0
 
-Empty Cells: 32     Score: 85
+Empty Cells: 35     Score: 124
 
-ybp.pbgbrr
-p..gbg..g.
-**y.brpg**
-GB.rgpry**
-*Y.gggp.**
-**r.gr..**
-.....gbygr
-yg.yrgbbgb
+ypp.pbgbr.
+p..ppry.g.
+PYy.brpg**
+RB.rb.by**
+BY.ppbp.**
+**r.rr..**
+......bygb
+y.....bbbb
 
-Move is: SWAP 5 5 1 8
+Move is: SWAP 0 0 2 6
 
-Empty Cells: 27     Score: 85
+Empty Cells: 30     Score: 124
 
-ybp.pbgbrr
-p..gbg.gr.
-**y.brpg**
-GB.rgpry**
-BY.gggp.*P
-**rbgg..*B
-.....gbygr
-yg.yrgbbgb
-
-Move is: SWAP 5 3 7 8
-
-Empty Cells: 22     Score: 85
-
-ybp.pbgbrr
-pr.gbg.gr.
-*Ry.brpgG*
-GB.rgpry**
-BY.gggp.*P
-*Prggg.p*B
-.....gbygr
-yg.yrgbbbb
-
-Move is: SWAP 3 1 6 9
-
-Empty Cells: 17     Score: 85
-
-ybp.pbgbrr
-pr.gbg.grg
-PRybbrpgG*
-GR.rgpry**
-BY.gggp.*P
-GPrgggrp*B
-.....gbygb
-yg.yrgbbbb
-
-Move is: SCORE 5 9
-
-Empty Cells: 21     Score: 106
-
-ybp.pbgbrr
-pr.gbg.grg
-PRybbrpgG*
-GR.rgpry**
-BY.gggp.*P
-GPrgggrp*G
-.....g.yg.
-ygryrgb...
-
-Move is: SWAP 0 7 1 5
-
-Empty Cells: 16     Score: 106
-
-ybpypbggrr
-pr.gbb.grg
-PRybbrpgG*
-GR.rgpryPY
-BY.gggp.*P
-GPrgggrp*G
-..b..g.ygg
-ygryrgb...
-
-Move is: SCORE 2 8
-
-Empty Cells: 18     Score: 136
-
-ybpypb..rr
-pr.gbb..rg
-PRybbrp.**
-GRgrgpryPY
-BY.gggpy*P
-GPrgggrp*G
-..b..g.ygg
-ygryrgbg..
-
-Move is: SWAP 7 4 3 2
-
-Empty Cells: 13     Score: 136
-
-ybpypb..rr
-pr.gbb..rg
-PRybbrp.*R
-GRrrgpryPY
-BY.gggpyGP
-GPrgggrp*G
-..byggrygg
-ygryggbg..
-
-Move is: SCORE 3 1
-
-Empty Cells: 15     Score: 161
-
-ybpypbp.rr
-p..gbb..rg
-P*ybbrp.*R
-GG.bgpryPY
-BY.gggpyGP
-GPrgggrp*G
-..byggrygg
-ygryggbg..
-
-Move is: SWAP 6 6 1 9
-
-Empty Cells: 10     Score: 161
-
-ybpypbpbrr
-pp.gbb..rr
-P*ybbrp.*R
-GG.bgpryPY
-BY.gggpyGP
-GPrgggrp*G
-.rbygggygg
-ygryggbgyr
-
-Move is: SCORE 2 9
-
-Empty Cells: 12     Score: 186
-
-ybpypbpbr.
-pp.gbb.g..
-P*ybbrp.**
-GG.bgpryPY
-BY.gggpyGP
-GPrgggrp*G
-rrbygggygg
-ygryggbgyr
-
-Move is: SWAP 6 7 1 7
-
-Empty Cells:  7     Score: 186
-
-ybpypbpbr.
-ppygbb.y..
-P*ybbrpr*G
-GG.bgpryPY
-BYrgggpyGP
-GPrgggrpRG
-rrbygggggg
-ygryggbgyr
-
-Move is: SCORE 5 9
-
-Empty Cells: 21     Score: 288
-
-ybpypbpbr.
-ppygbb.y..
-P*ybbrpr*G
-GG.b.pryPY
-BYr.g.pyGP
-GPr...rpR*
-rrby...b..
-ygryp.b.yr
-
-Move is: SWAP 0 1 0 6
-
-Empty Cells: 16     Score: 288
-
-yppypbbbr.
-ppygbb.y.r
-P*ybbrpr*G
-GGbb.pryPY
-BYrpg.pyGP
-GPrb..rpR*
-rrby...b..
-ygryp.bryr
+ppp.pbgbrr
+p..ppry.g.
+PYy.bryg**
+RB.rbpby**
+BY.ppbp.*P
+**r.rr..*B
+......bygb
+yg....bbbb
 
 Move is: SCORE 2 0
 
-Empty Cells: 18     Score: 298
+Empty Cells: 32     Score: 134
 
-yy.ypbbbr.
-g.ygbb.y.r
-**ybbrpr*G
-GGbb.pryPY
-BYrpg.pyGP
-GPrb..rpR*
-rrby..rb..
-ygryp.bryr
-
-Move is: SWAP 4 0 3 1
-
-Empty Cells: 13     Score: 298
-
-yy.ypbbbr.
-g.ygbb.yrr
-Y*ybbrpr*G
-GBbb.pryPY
-GYrpgypyGP
-GPrb..rpR*
-rrbyrrrb..
-ygryp.bryr
-
-Move is: SCORE 3 1
-
-Empty Cells: 20     Score: 328
-
-yy.ypg..rr
-g.yg...yrr
-Y*y..rpr*G
-G*...pryPY
-GYrpgypyGP
-GPrb..rpR*
-rrbyrrrb.g
-ygryp.bryr
-
-Move is: SWAP 5 7 3 6
-
-Empty Cells: 15     Score: 328
-
-yy.ypg..rr
-gyygp.byrr
-Y*y.prpr*G
-G*...ppyPY
-GYrpgypyGP
-GPrb..rrR*
-rrbyrrrbrg
-ygryp.bryr
-
-Move is: SCORE 5 8
-
-Empty Cells: 19     Score: 363
-
-yy.ypg..rr
-gyygp.byrr
-Y*y.prpr*G
-G*..pppyPY
-GYrpgypyGP
-GPrb...g*B
-rrby...b.g
-ygryp.bryr
-
-Move is: SWAP 7 4 3 7
-
-Empty Cells: 14     Score: 363
-
-yy.ypgr.rr
-gyygppbyrr
-Y*y.prpr*G
-G*y.ppppPY
-GYrpgypyGP
-GPrb..yg*B
-rrby...b.g
-ygryypbryr
-
-Move is: SCORE 3 8
-
-Empty Cells: 22     Score: 385
-
-yy.y.gr.rr
-gyyg.pbyrr
-Y*y..r.r*G
-G*y.....RY
-GYrpgy.yGP
-GPrb..yg*B
-rrby.r.b.g
-ygryypbryr
-
-Move is: SWAP 1 7 4 2
-
-Empty Cells: 17     Score: 385
-
-yyby.gryrr
-gyyg.pbrrr
-Y*y..r.r*G
-G*yg....RY
-GYypgy.yGP
-GPrb..yg*B
-rrby.rrbbg
-ygryypbryr
-
-Move is: SCORE 4 1
-
-Empty Cells: 22     Score: 417
-
-..by.gryrr
-gbbg.pbrrr
-YG...r.r*G
-G*.g....RY
-G*.pgy.yGP
-GPrb..yg*B
-rrby.rrbbg
-ygryypbryr
-
-Move is: SWAP 2 9 6 0
-
-Empty Cells: 17     Score: 417
-
-..by.gryrr
-gbbg.pbrrr
-YG..yr.rGR
-G*.gpr..RY
-G*.pgy.yGP
-GPrb..yg*B
-grbyyrrbbg
-ygryypbryr
-
-Move is: SCORE 2 9
-
-Empty Cells: 21     Score: 452
-
-..by.gryy.
-gbbg.pbg..
-YG..yr..G*
-G*.gpry.RY
-G*.pgy.yGP
-GPrb..yg*B
-grbyyrrbbg
-ygryypbryr
-
-Move is: SWAP 2 0 4 8
-
-Empty Cells: 16     Score: 452
-
-..by.gryy.
-gbbg.pbg..
-GG..yrp.G*
-G*ygpry.RY
-G*.pgyryYP
-GPrb.bygGB
-grbyyrrbbg
-ygryypbryr
-
-Move is: SCORE 5 0
-
-Empty Cells: 20     Score: 494
-
-.rby.gryy.
-.bbg.pbg..
-**..yrp.G*
-*Bygpry.RY
-**.pgyryYP
-*Prb.bygGB
-rrbyyrrbbg
-ygryypbryr
-
-Move is: SWAP 2 4 4 6
-
-Empty Cells: 15     Score: 494
-
-prby.gryyp
-.bbg.pbg..
-**p.rrp.G*
-YBygpry.RY
-**.pgyyyYP
-GPrb.bygGB
-rrbyyrrbbg
-ygryypbryr
-
-Move is: SCORE 4 8
-
-Empty Cells: 18     Score: 518
-
-prby.gryyp
-gbbg.pbgr.
-**p.rrp.G*
-YBygpr..RY
-**rpg...*P
-GPrb.b.gGB
-rrbyyrrbbg
-ygryypbryr
-
-Move is: SWAP 5 1 0 6
-
-Empty Cells: 13     Score: 518
-
-prbyggpyyp
-gbbgypbgr.
-G*p.rrp.G*
-YBygpr.bRY
-**rpgy..*P
-GRrb.b.gGB
-rrbyyrrbbg
-ygryypbryr
-
-Move is: SCORE 5 1
-
-Empty Cells: 15     Score: 543
-
-prbyggpyyp
-gbbgypbgr.
-G*p.rrp.GB
-YBygpr.bRY
-**.pgy..*P
-G*.b.bggGB
-p.byyrrbbg
-ygryypbryr
-
-Move is: SWAP 5 9 1 3
-
-Empty Cells: 10     Score: 543
-
-prbyggpyyp
-gbbbypbgrr
-G*prrrp.GB
-YBygpr.bRY
-**.pgyr.YP
-G*rb.bggGG
-p.byyrrbbg
-ygryypbryr
+.y..pbgbrr
+...pprygg.
+*Yy.bryg**
+RB.rbpby**
+BY.ppbp.*P
+**rbrr..*B
+......bygb
+yg....bbbb
 
 Move is: SCORE 5 9
 
-Empty Cells: 12     Score: 573
+Empty Cells: 36     Score: 155
 
-prbyggpyyp
-gbbbypbgrr
-GRprrrp.GB
-YBygpr.bRY
-**.pgyr.YP
-G*rb.b..PG
-p.byyrrbb.
-ygryypbryr
+.y..pbgbrr
+...pprygg.
+*Yypbryg**
+RB.rbpby**
+BY.ppbp.*P
+*Prbrr.p**
+.......yg.
+yg........
 
-Move is: SWAP 2 1 3 7
+Move is: SWAP 3 5 3 3
 
-Empty Cells:  7     Score: 573
+Empty Cells: 31     Score: 155
 
-prbyggpyyp
-gbbbypbgrr
-GBprrrpyGB
-YBygpr.rRY
-P*.pgyr.YP
-G*rbybp.PG
-p.byyrrbbg
-ygryypbryr
+.y..pbgbrr
+.r.ppryggg
+*YypbrygG*
+RB.pbrby**
+BY.ppbp.*P
+*Prbrr.p*B
+.......ygr
+yg........
 
-Move is: SCORE 3 1
+Move is: SCORE 2 8
 
-Empty Cells: 10     Score: 591
+Empty Cells: 33     Score: 185
 
-pr.yggpyyp
-g...ypbgrr
-G*prrrpyGB
-YGygpr.rRY
-P*.pgyrrYP
-G*rbybppPG
-p.byyrrbbg
-ygryypbryr
+yy..pbgbrr
+.r.ppry...
+PYypbry.**
+RB.pbrby**
+BY.ppbp.*P
+GPrbrr.p*B
+.......ygr
+yg........
 
-Move is: SWAP 7 2 4 5
+Move is: SWAP 1 1 1 6
 
-Empty Cells:  5     Score: 591
+Empty Cells: 28     Score: 185
 
-pr.yggpyyp
-g.g.ypbgrr
-G*prrrpyGB
-YGygpryrRY
-PB.pgrrrYP
-GYrbybppPG
-pgbyyrrbbg
-ygyyypbryr
+yy..pbgbrr
+.y.pprr..b
+PYypbry.**
+RB.pbrby**
+BY.ppbp.PP
+GPrbrryp*B
+.......ygr
+yg...bb...
 
-Move is: SCORE 3 8
+Move is: SCORE 2 1
 
-Empty Cells: 11     Score: 636
+Empty Cells: 30     Score: 205
 
-pr.yggpyyp
-g.gbypbgrr
-G*p...pyGB
-YGygp.y.*Y
-PBbpgb..YP
-GYrbybppPG
-pgbyyrrbbg
-ygyyypbryr
+...ypbgbrr
+...pprr..b
+P*.pbry.**
+RB.pbrbyP*
+BY.ppbp.PP
+GPrbrryp*B
+.......ygr
+ygr..bb...
 
-Move is: SWAP 4 8 7 5
+Move is: SWAP 2 0 4 5
 
-Empty Cells:  6     Score: 636
+Empty Cells: 25     Score: 205
 
-pr.yggpyyp
-g.gbypbgrr
-GPpbyypyGB
-YGygp.y.*Y
-PBbpgb.rPP
-GYrbybppPG
-pgbyyrrbbg
-ygyyyybryr
+...ypbgbrr
+...pprr.bb
+B*.pbry.B*
+RB.pbrbyPY
+BY.pppp.PP
+GPrbrryp*B
+..b....ygr
+ygrg.bb...
 
-Move is: SCORE 5 8
+Move is: SWAP 0 8 3 6
 
-Empty Cells:  8     Score: 646
+Empty Cells: 20     Score: 205
 
-pr.yggpyyp
-g.gbypbgrr
-GPpbyypyGB
-YGygpyy.*Y
-PBbpgbgr**
-GYrbybg.*G
-pgbyyrrbbg
-ygyyyybryr
+b..ypbgbbr
+...pprr.bb
+B*.pbry.B*
+RBgpbrryPY
+BY.ppppyPP
+GPrbrryp*B
+..by...ygr
+ygrg.bbg..
 
-Move is: SWAP 5 2 6 7
+Move is: SCORE 2 8
 
-Empty Cells:  3     Score: 646
+Empty Cells: 22     Score: 220
 
-prpyggpyyp
-g.gbypbgrr
-GPpbyypyGB
-YGygpyyb*Y
-PBbpgbgrYB
-GYbbybg.PG
-pgbyyrrrbg
-ygyyyybryr
+b..ypbg..r
+...pprr..y
+B*.pbry.**
+RBgpbrryPY
+BY.ppppyPP
+GPrbrryp*B
+..byg.rygr
+ygrg.bbg..
 
-Move is: SCORE 4 1
+Move is: SWAP 5 1 4 7
 
-Empty Cells:  5     Score: 661
+Empty Cells: 17     Score: 220
 
-prpyggpyyp
-g.gbypbgrr
-GPpbyypyGB
-YGygpyybPY
-P*.pgbgrYB
-GY.pybgbPG
-pg.yyrrrbg
-ygyyyybryr
+br.ypbg.rr
+...pprr..y
+B*.pbry.*R
+RBgpbrryPY
+BY.pppppPP
+GYrbrryp*B
+..byg.rygr
+ygrgpbbg.r
 
-Move is: SWAP 5 1 0 4
+Move is: SCORE 4 9
 
-Empty Cells:  0     Score: 661
+Empty Cells: 28     Score: 248
 
-prpyygpyyp
-gggbypbgrr
-GPpbyypyGB
-YGygpyybPY
-PGypgbgrYB
-GGypybgbPG
-pggyyrrrbg
-ygyyyybryr
+br.y.bg.rr
+.....rr..y
+B*..bry.*R
+RBg.brryBY
+BY......**
+GYrbrry.*B
+.rbyg.rygr
+ygrgpbbgyr
+
+Move is: SWAP 6 1 1 9
+
+Empty Cells: 23     Score: 248
+
+br.y.bg.rr
+.r..yrr..r
+B*y.bry.*R
+RBggbrryBY
+BY..r...**
+GYrbrry.*B
+.ybyg.rygr
+ygrgpbbgyr
+
+Move is: SWAP 6 2 1 4
+
+Empty Cells: 18     Score: 248
+
+br.ybbgprr
+.r..brry.r
+B*y.bry.*R
+RBggbrryBY
+BY..r...**
+GYrbrryp*B
+ryyyg.rygr
+ygrgpbbgyr
 
 Move is: SCORE 5 1
 
-Empty Cells:  4     Score: 703
+Empty Cells: 20     Score: 268
 
-prpyygpyyp
-gggbypbgrr
-GPpbyypyGB
-Y*ygpyybPY
-P*ypgbgrYB
-P*ypybgbPG
-pg.yyrrrbg
-yryyyybryr
+br.ybbgprr
+.r..brry.r
+B*y.bry.*R
+RBggbrryBY
+B*..r...Y*
+GRrbrryp*B
+r...gbrygr
+ygrgpbbgyr
 
-Move is: SWAP 0 2 3 3
+Move is: SWAP 3 0 5 3
 
-Game over.  Final score = 703
+Empty Cells: 15     Score: 268
+
+br.ybbgprr
+rr..brry.r
+B*y.bry.*R
+BBggbrryBY
+B*r.r...YY
+GRrrrrypRB
+r.p.gbrygr
+ygrgpbbgyr
+
+Move is: SCORE 5 1
+
+Empty Cells: 19     Score: 303
+
+br.ybbgprr
+rryrbrry.r
+B*y.bry.*R
+BBggbrryBY
+B*p.....YY
+G*....ypRB
+r.p.gbrygr
+ygrgpbbgyr
+
+Move is: SWAP 5 9 1 0
+
+Empty Cells: 14     Score: 303
+
+br.ybbgprr
+bryrbrry.r
+B*y.bry.*R
+BBggbrryBY
+BBppg...YY
+GPb...ypRR
+r.p.gbrygr
+ygrgpbbgyr
+
+Move is: SCORE 4 1
+
+Empty Cells: 18     Score: 324
+
+.r.ybbgprr
+gryrbrry.r
+**y.bry.*R
+**ggbrryBY
+**ppg..bYY
+GPbb..ypRR
+r.p.gbrygr
+ygrgpbbgyr
+
+Move is: SWAP 3 8 0 3
+
+Empty Cells: 13     Score: 324
+
+.rgbbbgprr
+gryrbrryrr
+**y.bry.*R
+*RggbrryYY
+**ppgy.bYY
+GPbb..ypRR
+rgp.gbrygr
+ygrgpbbgyr
+
+Move is: SCORE 2 9
+
+Empty Cells: 15     Score: 349
+
+.rgbbbgp..
+gryrbrry.r
+Y*yrbry.**
+*RggbrryYY
+**ppgy.bYY
+GPbb..ypRR
+rgp.gbrygr
+ygrgpbbgyr
+
+Move is: SCORE 4 9
+
+Empty Cells: 17     Score: 369
+
+.rgbbbgp.r
+gryrbrry.r
+Y*yrbry.**
+*Rggbrr.**
+*Yppgy.b**
+GPbbp.ypRR
+rgp.gbrygr
+ygrgpbbgyr
+
+Move is: SWAP 5 4 5 2
+
+Empty Cells: 12     Score: 369
+
+.rgbbbgp.r
+gryrbrry.r
+Y*yrbry.*R
+BRggbrryGY
+*Yppgy.b**
+GPpbb.ypRR
+rgp.gbrygr
+ygrgpbbgyr
+
+Move is: SCORE 5 1
+
+Empty Cells: 14     Score: 379
+
+prgbbbgp.r
+gryrbrry.r
+Y*yrbry.*R
+BRggbrryGY
+YY..gy.bG*
+G*.bb.ypRR
+rg..gbrygr
+ygrgpbbgyr
+
+Move is: SWAP 6 8 6 0
+
+Empty Cells:  9     Score: 379
+
+prgbbbgp.r
+gryrbrry.r
+YGyrbry.*R
+BRggbrryGY
+YY.ygybbG*
+GY.bb.ypRR
+ggg.gbryrr
+ygrgpbbgyr
+
+Move is: SCORE 5 9
+
+Empty Cells: 11     Score: 404
+
+prgbbbgpyr
+gryrbrry.r
+YGyrbry.GR
+BRggbrryGY
+YY.ygybbG*
+GY.bb.yp*R
+ggg.gbry..
+ygrgpbbgy.
+
+Move is: SCORE 5 0
+
+Empty Cells: 13     Score: 434
+
+prgbbbgpyr
+gryrbrry.r
+YGyrbry.GR
+BRggbrryGY
+YY.ygybbGY
+*Y.bbbypGR
+....gbry..
+y.rgpbbgy.
+
+Move is: SWAP 4 4 4 7
+
+Empty Cells:  8     Score: 434
+
+prgbbbgpyr
+gryrbrry.r
+YGyrbry.GR
+BRggbrryGY
+YY.ybybgGY
+GY.bbbypGR
+y.y.gbrypg
+y.rgpbbgy.
+
+Move is: SCORE 5 8
+
+Empty Cells: 10     Score: 464
+
+prgbbbgpyr
+gryrbrryrr
+YGyrbry.PR
+BRggbrry*Y
+YY.ybyb.*Y
+GY.bbbyp*R
+y.y.gbrypg
+ygrgpbbgy.
+
+Move is: SWAP 5 9 1 7
+
+Empty Cells:  5     Score: 464
+
+prgbbbgpyr
+gryrbrrrrr
+YGyrbry.PR
+BRggbrryPY
+YYrybyb.*Y
+GYybbbypPY
+y.yygbrypg
+ygrgpbbgy.
+
+Move is: SCORE 2 9
+
+Empty Cells: 12     Score: 514
+
+prgbbbgpyb
+gryrb.....
+YGyrb.y.PB
+BRggbr.yPY
+YYrybyb.*Y
+GYybbbypPY
+y.yygbrypg
+ygrgpbbgy.
+
+Move is: SCORE 5 1
+
+Empty Cells: 15     Score: 538
+
+prgbbbgpyb
+gryrbg....
+YGyrbpy.PB
+BRggbr.yPY
+**rybyb.YY
+G*.bbbypPY
+y...gbrypg
+ygrgpbbgy.
+
+Move is: SWAP 2 9 4 5
+
+Empty Cells: 10     Score: 538
+
+prgbbbgpyb
+gryrbgp.yr
+YGyrbpy.PY
+BRggbr.yPY
+**rybbb.YY
+G*rbbbypPY
+y...gbrypg
+ygrgpbbgyg
+
+Move is: SCORE 5 9
+
+Empty Cells: 12     Score: 558
+
+prgbbbgpyb
+gryrbgp.yr
+YGyrbpyyP*
+BRggbr.yP*
+R*rybbb.**
+G*rbbbypP*
+y.b.gbrypg
+ygrgpbbgyg
+
+Move is: SWAP 2 8 6 7
+
+Empty Cells:  7     Score: 558
+
+prgbbbgpyb
+gryrbgp.yr
+YGyrbpyyYP
+BRggbr.yPP
+R*rybbbr*B
+G*rbbbypPG
+y.b.gbrppg
+ygrgpbbgyg
+
+Move is: SCORE 2 8
+
+Empty Cells: 10     Score: 582
+
+prgbbbgp.b
+gryrbgp..r
+YGyrbp..*P
+BRggbr.yPP
+RBrybbbrBB
+G*rbbbypPG
+y.b.gbrppg
+ygrgpbbgyg
+
+Move is: SWAP 4 1 4 7
+
+Empty Cells:  5     Score: 582
+
+prgbbbgp.b
+gryrbgppyr
+YGyrbp..*P
+BRggbr.yPP
+RRrybbbbBB
+GYrbbbypPG
+yybggbrppg
+ygrgpbbgyg
+
+Move is: SCORE 4 9
+
+Empty Cells: 20     Score: 636
+
+prg.r.gp.b
+gryr.gppyr
+YGyr.pg.*P
+BRgg.r.yPP
+RRry....**
+GYr...ypPG
+yybgg.rppg
+ygrgpy.gyg
+
+Move is: SCORE 4 1
+
+Empty Cells: 22     Score: 661
+
+prg.r.gp.b
+gryr.gppyr
+YGyrypg.*P
+B*gg.r.yPP
+**.y.b..**
+GY.r..ypPG
+yybgg.rppg
+ygrgpy.gyg
+
+Move is: SWAP 7 8 7 1
+
+Empty Cells: 17     Score: 661
+
+prgyrpgp.b
+gryr.gppyr
+YGyrypg.RP
+B*ggpr.yPP
+**.ypb..**
+GY.r..ypPG
+yybgg.rppg
+yyrgpy.ggg
+
+Move is: SCORE 5 1
+
+Empty Cells: 19     Score: 681
+
+prgyrpgp.b
+gryr.gppyr
+YGyrypg.RP
+B*ggpr.yPP
+G*.ypbg.**
+G*.r..ypPG
+..bgggrppg
+..rgpy.ggg
+
+Move is: SCORE 5 9
+
+Empty Cells: 21     Score: 711
+
+prgyrpgp.b
+gryr.gppyr
+YGyrypg.RP
+B*ggpr.yPP
+GR.ypbg.**
+GP.r..ypP*
+..bgggrpp.
+..rgpyy...
+
+Move is: SWAP 5 1 6 6
+
+Empty Cells: 16     Score: 711
+
+prgyrpgp.b
+gryr.gppyr
+YGyrypg.RP
+B*ggpr.yPP
+GR.ypbg.*B
+GR.r.rypP*
+..bgggpppy
+..rgpyypb.
+
+Move is: SCORE 5 8
+
+Empty Cells: 19     Score: 723
+
+prgyrpgp.b
+gryr.gppyr
+YGyrypg.RP
+B*ggpr.yPP
+GR.ypbg.YB
+GR.r.ry.P*
+..bggg.p.y
+..rgpyy.b.
+
+Move is: SWAP 4 8 7 4
+
+Empty Cells: 14     Score: 723
+
+prgyrpgprb
+gryr.gppyr
+YGyrypgbRP
+BPggpr.yPP
+GR.ypbg.PB
+GR.r.rybP*
+..bggg.p.y
+.rrgyyy.b.
+
+Move is: SCORE 5 8
+
+Empty Cells: 16     Score: 733
+
+prgyrpgprb
+gryr.gppyr
+YGyrypgbR*
+BPggpr.yPG
+GR.ypbg.*B
+GR.r.ryb**
+..bggg.pry
+.rrgyyy.b.
+
+Move is: SWAP 3 1 1 5
+
+Empty Cells: 11     Score: 733
+
+prgyrpgprb
+gryrypppyr
+YGyrypgbR*
+BGggpr.yPG
+GRyypbg.*B
+GR.r.ryb**
+rbbggg.pry
+rrrgyyy.b.
+
+Move is: SWAP 5 0 1 1
+
+Empty Cells:  6     Score: 733
+
+prgyrpgprb
+ggyrypppyr
+YGyrypgbR*
+BGggprryPG
+GRyypbgg*B
+RRyr.ryb**
+rbbgggypry
+rrrgyyy.bb
+
+Move is: SCORE 3 1
+
+Empty Cells:  9     Score: 769
+
+prgyrpgprb
+p.yrypppyr
+YPyrypgbR*
+B*..prryPG
+GRyypbgg*B
+RRyr.ryb*Y
+rbbgggypry
+rrrgyyy.bb
+
+Move is: SCORE 5 1
+
+Empty Cells: 13     Score: 804
+
+prgyrpgprb
+p.yrypppyr
+YPyrypgbR*
+B*..prryPG
+G*yypbgg*B
+P*yrpryb*Y
+.bbgggypry
+..ygyyy.bb
+
+Move is: SWAP 2 1 2 4
+
+Empty Cells:  8     Score: 804
+
+prgyrpgprb
+p.yrypppyr
+YYyrppgbR*
+B*.yprryPG
+G*yypbggGB
+P*yrpryb*Y
+.bbgggypry
+prygyyyrbb
+
+Move is: SWAP 1 8 2 3
+
+Empty Cells:  3     Score: 804
+
+prgyrpgprb
+pryryppprr
+YYyyppgbRP
+B*gyprryPG
+GGyypbggGB
+P*yrpryb*Y
+pbbgggypry
+prygyyyrbb
+
+Move is: SCORE 2 1
+
+Empty Cells:  9     Score: 840
+
+prgyrpgprb
+prrryppprr
+*R..ppgbRP
+BRg.prryPG
+GG..pbggGB
+P*.rpryb*Y
+pbbgggypry
+prygyyyrbb
+
+Move is: SCORE 3 1
+
+Empty Cells: 12     Score: 870
+
+pggyrpgprb
+p..pyppprr
+**..ppgbRP
+BBg.prryPG
+GG..pbggGB
+P*.rpryb*Y
+pbbgggypry
+prygyyyrbb
+
+Move is: SWAP 3 8 0 6
+
+Empty Cells:  7     Score: 870
+
+pggyrppprb
+pb.pyppprr
+RB..ppgbRP
+BBgrprryGG
+GG.gpbggGB
+P*.rpryb*Y
+pbbgggypry
+prygyyyrbb
+
+Move is: SCORE 4 8
+
+Empty Cells:  9     Score: 900
+
+pggyrppprb
+pb.pyppprr
+RB..ppgbRP
+BBgrprryG*
+GG.gpb.b*B
+P*.rprybGY
+pbbgggypry
+prygyyyrbb
+
+Move is: SWAP 2 0 0 9
+
+Empty Cells:  4     Score: 900
+
+pggyrppprr
+pb.pyppprr
+BBbrppgbRP
+BBgrprryG*
+GG.gpb.bYB
+PPrrprybGY
+pbbgggypry
+prygyyyrbb
+
+Move is: SCORE 2 8
+
+Empty Cells:  6     Score: 925
+
+pggyrpppr.
+pb.pypppp.
+BBbrppgb*P
+BBgrprryG*
+GGggpb.bYB
+PPrrprybGY
+pbbgggypry
+prygyyyrbb
+
+Move is: SCORE 3 1
+
+Empty Cells:  9     Score: 943
+
+pggyrpppr.
+pg.pypppp.
+**.rppgb*P
+*PgrprryG*
+GGggpbybYB
+PPrrprybGY
+pbbgggypry
+prygyyyrbb
+
+Move is: SCORE 4 1
+
+Empty Cells: 11     Score: 973
+
+pggyrppprb
+pgrpypppp.
+**.rppgb*P
+*P.rprryG*
+R*..pbybYB
+PPrrprybGY
+pbbgggypry
+prygyyyrbb
+
+Move is: SWAP 7 2 4 7
+
+Empty Cells:  6     Score: 973
+
+pggyrppprb
+pgrpyppppg
+**.rppgbYP
+YP.rprryG*
+RB.bpbyyYB
+PPrrprybGY
+pbbgggypry
+prbgyyyrbb
+
+Move is: SCORE 4 8
+
+Empty Cells: 12     Score: 1009
+
+pggyrppprb
+pgrpyppppg
+**.rppgbYP
+YP.rprr.G*
+RB.bpb.y*B
+PPrrprybGY
+pbbggggpry
+prbg...rbb
+
+Move is: SWAP 1 0 1 9
+
+Empty Cells:  7     Score: 1009
+
+pggyrppprb
+ggrpyppppp
+R*.rppgbYP
+YP.rprryG*
+RB.bpb.yGB
+PPrrprybGY
+pbbggggpry
+prbggy.rbb
+
+Move is: SCORE 2 9
+
+Empty Cells: 18     Score: 1037
+
+pggyr...rb
+ggrpy.r...
+R*.r..gbY*
+YP.r.rryGP
+RBrb.b.yGB
+PPrr.rybGY
+pbbggggpry
+prbggy.rbb
+
+Move is: SWAP 4 1 6 7
+
+Empty Cells: 13     Score: 1037
+
+pggyrbp.rb
+ggrpy.r...
+R*brp.gbY*
+YP.r.rryGP
+RPrb.b.yGB
+PPrr.rybGY
+pbbggggbry
+prbggyrrbb
+
+Move is: SCORE 5 1
+
+Empty Cells: 16     Score: 1049
+
+pggyrbp.rb
+ggrpy.r...
+R*brp.gbYR
+YY.rprryGP
+R*rb.b.yGB
+**rr.rybGY
+.bbggggbry
+.rbggyrrbb
+
+Move is: SWAP 2 0 2 6
+
+Empty Cells: 11     Score: 1049
+
+pggyrbp.rb
+ggrpy.rg..
+G*brp.rbYR
+YY.rprryGP
+RGrb.bbyGB
+*Rrr.rybGY
+.bbggggbry
+grbggyrrbb
+
+Move is: SCORE 2 0
+
+Empty Cells: 13     Score: 1079
+
+p..yrbp.rb
+g.rpy.rgy.
+**brp.rbYR
+YY.rprryGP
+RGrbpbbyGB
+*Rrr.rybGY
+.bbggggbry
+grbggyrrbb
+
+Move is: SWAP 4 3 7 7
+
+Empty Cells:  8     Score: 1079
+
+p.byrbpprb
+g.rpy.rgyr
+*Bbrp.rbYR
+YY.rprryGP
+RGrrpbbyGB
+PRrr.rybGY
+.bbggggbry
+grbggyrbbb
+
+Move is: SCORE 5 1
+
+Empty Cells: 12     Score: 1114
+
+ppbyrbpprb
+g.rpy.rgyr
+*Bbgp.rbYR
+YY..prryGP
+RG..pbbyGB
+P*b..rybGY
+.bbggggbry
+grbggyrbbb
+
+Move is: SWAP 5 6 2 7
+
+Empty Cells:  7     Score: 1114
+
+ppbyrbpprb
+gyrpy.rgyr
+*BbgpbryYR
+YY..prryGP
+RGy.pbbyGB
+PRbr.rbbGY
+.bbggggbry
+grbggyrbbb
+
+Move is: SCORE 2 8
+
+Empty Cells:  9     Score: 1134
+
+ppbyrbpprb
+gyrpybrg.r
+*Bbgpbr.*R
+YY.gprr.GP
+RGy.pbb.GB
+PRbr.rbbGY
+gbbggggbry
+grbggyrbbb
+
+Move is: SWAP 5 8 4 9
+
+Empty Cells:  4     Score: 1134
+
+ppbyrbpprb
+gyrpybrg.r
+YBbgpbr.*R
+YY.gprryGP
+RGyrpbbgGG
+PRbrbrbbBY
+gbbggggbry
+grbggyrbbb
+
+Move is: SCORE 5 8
+
+Empty Cells: 10     Score: 1161
+
+ppbyrbpprb
+gyrpybrg.r
+YBbgpbr.RR
+YY.gprryGP
+RGyrpg.gGG
+PRbrbr..*Y
+gbbgggg.ry
+grbggyr.y.
+
+Move is: SWAP 5 1 0 9
+
+Empty Cells:  5     Score: 1161
+
+ppbyrbpprr
+gyrpybrg.r
+YBbgpbr.RR
+YYggprryGP
+RGyrpgrgGG
+PBbrbr.p*Y
+gbbgggggry
+grbggyr.yp
+
+Move is: SCORE 2 9
+
+Empty Cells:  7     Score: 1186
+
+ppbyrbpp..
+gyrpybrg..
+YBbgpbry*Y
+YYggprryGP
+RGyrpgrgGG
+PBbrbr.p*Y
+gbbgggggry
+grbggyryyp
+
+Move is: SCORE 5 1
+
+Empty Cells:  9     Score: 1201
+
+ppbyrbpp..
+gyrpybrgb.
+YBbgpbry*Y
+YYggprryGP
+RGyrpgrgGG
+P*.rbryp*Y
+g..gggggry
+gryggyryyp
+
+Move is: SWAP 5 7 2 3
+
+Empty Cells:  4     Score: 1201
+
+ppbyrbppgp
+gyrpybrgby
+YBbppbry*Y
+YYggprryGP
+RGyrpgrgGG
+PY.rbryg*Y
+g.pgggggry
+gryggyryyp
+
+Move is: SCORE 4 9
+
+Empty Cells: 13     Score: 1273
+
+ppbyrbppgp
+gyrpybrgby
+YBbppbry*Y
+YYggprry*P
+RGyrpgr.**
+PY.rbryp*Y
+g.pp..p.ry
+gry..yryyp
+
+Move is: SWAP 4 1 5 6
+
+Empty Cells:  8     Score: 1273
+
+ppbyrbppgp
+gyrpybrgby
+YBbppbryPY
+YYggprry*P
+RYyrpgr.YP
+PY.rbrgp*Y
+g.pp..prry
+gryp.yryyp
+
+Move is: SCORE 5 1
+
+Empty Cells: 11     Score: 1297
+
+ppbyrbppgp
+gyrpybrgby
+*BbppbryPY
+**ggprryBP
+R*.rpgr.YP
+P*grbrgp*Y
+g.pp..prry
+grypbyryyp
+
+Move is: SWAP 2 8 4 8
+
+Empty Cells:  6     Score: 1297
+
+ppbyrbppgp
+gyrpybrgby
+PBbppbryYY
+**ggprryBP
+R*.rpgryPP
+PGgrbrgpRY
+g.ppp.prry
+grypbyryyp
+
+Move is: SCORE 2 9
+
+Empty Cells:  9     Score: 1321
+
+ppbyrbppgp
+gyrpybrgb.
+PBbppbr.*B
+**ggprr.BP
+R*.rpgrbPP
+PGgrbrgpRY
+gyppp.prry
+grypbyryyp
+
+Move is: SWAP 5 0 1 0
+
+Empty Cells:  4     Score: 1321
+
+ppbyrbppgp
+pyrpybrgbp
+PBbppbrr*B
+BRggprr.BP
+R*.rpgrbPP
+GGgrbrgpRY
+gypppyprry
+grypbyryyp
+
+Move is: SCORE 5 1
+
+Empty Cells:  6     Score: 1351
+
+ppbyrbppgp
+pyrpybrgbp
+PBbppbrr*B
+BRggprr.BP
+RG.rpgrbPP
+Y*.rbrgpRY
+.ypppyprry
+prypbyryyp
+
+Move is: SWAP 7 9 1 1
+
+Empty Cells:  1     Score: 1351
+
+ppbyrbppgp
+pprpybrgbp
+PBbppbrrPB
+BRggprrpBP
+RGrrpgrbPP
+YG.rbrgpRY
+gypppyprry
+prypbyryyy
+
+Move is: SCORE 2 0
+
+Empty Cells:  3     Score: 1361
+
+..byrbppgp
+bgrpybrgbp
+RBbppbrrPB
+BRggprrpBP
+RGrrpgrbPP
+YG.rbrgpRY
+gypppyprry
+prypbyryyy
+
+Move is: SCORE 5 9
+
+Empty Cells:  5     Score: 1381
+
+b.byrbppgp
+bgrpybrgbp
+RBbppbrrPB
+BRggprrpBP
+RGrrpgrbPP
+YG.rbrgpR*
+gypppyprr.
+prypbyrr.r
+
+Move is: SCORE 5 8
+
+Empty Cells:  7     Score: 1406
+
+bpbyrbppgp
+bgrpybrgbp
+RBbppbrrPB
+BRggprrpBP
+RGrrpgrbPP
+YG.rbrgp**
+gypppyp.p.
+prypbyg..r
+
+Move is: SWAP 2 9 0 1
+
+Empty Cells:  2     Score: 1406
+
+bbbyrbppgp
+bgrpybrgbp
+RBbppbrrPP
+BRggprrpBP
+RGrrpgrbPP
+YG.rbrgpRR
+gypppyp.pg
+prypbygybr
+
+Move is: SCORE 4 9
+
+Empty Cells:  6     Score: 1420
+
+bbbyrbppg.
+bgrpybrgb.
+RBbppbrr**
+BRggprrpBG
+RGrrpgrb**
+YGbrbrgpRR
+gypppypgpg
+prypbygybr
+
+Move is: SWAP 2 0 4 7
+
+Empty Cells:  1     Score: 1420
+
+bbbyrbppgy
+bgrpybrgbb
+BBbppbrr*P
+BRggprrpBG
+RGrrpgrrYP
+YGbrbrgpRR
+gypppypgpg
+prypbygybr
+
+Move is: SCORE 3 0
+
+Empty Cells:  6     Score: 1444
+
+.rbyrbppgy
+.grpybrgbb
+**.ppbrr*P
+PRggprrpBG
+RGrrpgrrYP
+YGbrbrgpRR
+gypppypgpg
+prypbygybr
+
+Move is: SWAP 5 7 1 2
+
+Empty Cells:  1     Score: 1444
+
+prbyrbppgy
+bgppybrgbb
+PYrppbrr*P
+PRggprrpBG
+RGrrpgrrYP
+YGbrbrgrRR
+gypppypgpg
+prypbygybr
+
+Move is: SCORE 5 9
+
+Empty Cells:  8     Score: 1494
+
+prbyrbppgy
+bgppybpgbb
+PYrppb..*P
+PRggp..pBG
+RGrrpggbYP
+YGbrbrg.**
+gypppypgpg
+prypbygybr
+
+Move is: SWAP 4 1 5 5
+
+Empty Cells:  3     Score: 1494
+
+prbyrbppgy
+bgppybpgbb
+PYrppbbgPP
+PRggp.ypBG
+RRrrpggbYP
+YGbrbggy**
+gypppypgpg
+prypbygybr
+
+Move is: SCORE 4 1
+
+Empty Cells:  6     Score: 1524
+
+prbyrbppgy
+bgppybpgbb
+PYrppbbgPP
+PGggp.ypBG
+**.gpggbYP
+YGb.bggy*G
+gypppypgpg
+prypbygybr
+
+Move is: SWAP 3 9 4 4
+
+Empty Cells:  1     Score: 1524
+
+prbyrbppgy
+bgppybpgbb
+PYrppbbgPP
+PGggp.ypBP
+YYpggggbYP
+YGbpbggyPG
+gypppypgpg
+prypbygybr
+
+Move is: SCORE 3 1
+
+Empty Cells:  7     Score: 1578
+
+prbyrbppgy
+bgppybpgbb
+PYrppbbgPP
+P*b.pgypBP
+YYp....bYP
+YGbpb.pyPG
+gypppypgpg
+prypbygybr
+
+Move is: SWAP 4 8 4 2
+
+Empty Cells:  2     Score: 1578
+
+prbyrbppgy
+bgppybpgbb
+PYrppbbgPP
+PYb.pgypBP
+YYyrgp.bPP
+YGbpbrpyPG
+gypppypgpg
+prypbygybr
+
+Move is: SCORE 5 8
+
+Empty Cells:  6     Score: 1592
+
+prbyrbppgy
+bgppybpgbb
+PYrppbbg**
+PYb.pgypB*
+YYyrgppb**
+YGbpbrpyPG
+gypppypgbg
+prypbygybr
+
+Move is: SCORE 5 0
+
+Empty Cells:  9     Score: 1616
+
+prbyrbppgy
+bgppybpgbb
+PYrppbbg**
+P*b.pgypBR
+**.rgppbB*
+*GbpbrpyPG
+gypppypgbg
+prypbygybr
+
+Move is: SWAP 5 8 1 0
+
+Empty Cells:  4     Score: 1616
+
+prbyrbppgy
+pgppybpgbb
+PYrppbbg*R
+P*brpgypBR
+Y*prgppbB*
+GGbpbrpyBG
+gypppypgbg
+prypbygybr
+
+Move is: SCORE 5 8
+
+Empty Cells:  7     Score: 1634
+
+prbyrbppgy
+pgppybpgbb
+PYrppbbg*R
+PPbrpgyp*R
+YBprgppr**
+GGbpbrpy*G
+gypppypg.g
+prypbygy.r
+
+Move is: SCORE 3 1
+
+Empty Cells:  9     Score: 1644
+
+prbyrbppgy
+.gppybpgbb
+*Yrppbbg*R
+*Rbrpgyp*R
+YBprgpprY*
+GGbpbrpy*G
+gypppypg.g
+prypbygy.r
+
+Move is: SWAP 0 4 3 2
+
+Empty Cells:  4     Score: 1644
+
+prbybbppgy
+rgppybpgbb
+*YrppbbgGR
+*RrrpgypGR
+YBprgpprYB
+GGbpbrpy*G
+gypppypg.g
+prypbygyyr
+
+Move is: SCORE 3 1
+
+Empty Cells:  6     Score: 1669
+
+prbybbppgy
+rgppybpgbb
+*Y.ppbbgGR
+**pgpgypGR
+YBp.gpprYB
+GGbpbrpyGG
+gypppypg.g
+prypbygyyr
+
+Move is: SWAP 4 8 7 6
+
+Empty Cells:  1     Score: 1669
+
+prbybbppgy
+rgppybpgbb
+BYrppbbgGR
+G*pgpgypGR
+YBprgpprGB
+GGbpbrpyGG
+gypppypgrg
+prypbyyyyr
+
+Move is: SCORE 5 9
+
+Empty Cells:  6     Score: 1717
+
+prbybbppgy
+rgppybpbbb
+BYrppbb.*R
+G*pgpgypBR
+YBprgpprRB
+GGbpbrpy**
+gypppypgr.
+prypbyyyyr
+
+Move is: SWAP 4 0 6 7
+
+Empty Cells:  1     Score: 1717
+
+prbybbppgy
+rgppybpbbb
+BYrppbbr*R
+GRpgpgypBR
+GBprgpprRB
+GGbpbrpyBG
+gypppypyrg
+prypbyyyyr
+
+Move is: SCORE 5 1
+
+Empty Cells:  3     Score: 1747
+
+prbybbppgy
+rgppybpbbb
+BYrppbbr*R
+PRpgpgypBR
+*BprgpprRB
+PYbpbrpyBG
+.ypppypyrg
+prypbyyyyr
+
+Move is: SWAP 5 8 0 3
+
+Game over.  Final score = 1747

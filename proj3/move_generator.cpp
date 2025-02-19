@@ -1,16 +1,16 @@
 #include "board_utils.h"
 #include "move_generator.h"
+#include "disjoint.h"
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <cmath>
 #include <utility>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
-//------------------------------------------------------------------------------
-// Aggregate score evaluation function renamed to computeFinalScore.
-// Computes sub-scores from connected groups on the board using DFS,
-// then combines them with weighted constants.
+// Helper functions for board evaluation
 
 bool isCorner(int row, int col, int rows, int cols) {
   return (row == 2 &&
@@ -62,10 +62,84 @@ double computeConnectivityScore(const BoardState &state,
   for (const auto &cell : group) {
     if (hasAdjacentDifferentColorGroup(state, cell.first, cell.second, rows,
                                        cols)) {
-      score += 0.5;
+      score += 2.9; // 2.9 worked best, 1763 avg
     }
   }
   return score;
+}
+
+// Utility function to convert 2D coordinates to a 1D index
+int cellToIndex(int row, int col, int cols) {
+  return row * cols + col;
+}
+
+// Utility function to convert 1D index to 2D coordinates
+pair<int, int> indexToCell(int index, int cols) {
+  return {index / cols, index % cols};
+}
+
+// Using disjoint sets to identify connected groups
+vector<vector<pair<int, int>>> findConnectedGroups(const BoardState &state, int rows, int cols) {
+  // Total number of cells in the board
+  int totalCells = rows * cols;
+  
+  // Create disjoint set data structure
+  DisjointSetByRankWPC dset(totalCells);
+  
+  // Map to store group representatives and their corresponding cells
+  unordered_map<int, vector<pair<int, int>>> groupMap;
+  
+  // First pass: Union adjacent cells of the same color
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      char currentPiece = state.board[i][j];
+      if (currentPiece == '.' || currentPiece == '*') continue;
+      
+      int currentIdx = cellToIndex(i, j, cols);
+      char currentColor = pieceColor(currentPiece);
+      
+      // Check all four neighbors
+      const int dr[] = {0, 1, 0, -1};
+      const int dc[] = {1, 0, -1, 0};
+      
+      for (int k = 0; k < 4; k++) {
+        int ni = i + dr[k];
+        int nj = j + dc[k];
+        
+        if (ni < 0 || ni >= rows || nj < 0 || nj >= cols) continue;
+        
+        char neighborPiece = state.board[ni][nj];
+        if (neighborPiece == '.' || neighborPiece == '*') continue;
+        
+        char neighborColor = pieceColor(neighborPiece);
+        if (neighborColor == currentColor) {
+          int neighborIdx = cellToIndex(ni, nj, cols);
+          dset.Union(dset.Find(currentIdx), dset.Find(neighborIdx));
+        }
+      }
+    }
+  }
+  
+  // Second pass: Collect cells belonging to each group
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      char currentPiece = state.board[i][j];
+      if (currentPiece == '.' || currentPiece == '*') continue;
+      
+      int currentIdx = cellToIndex(i, j, cols);
+      int groupRep = dset.Find(currentIdx);
+      
+      groupMap[groupRep].push_back({i, j});
+    }
+  }
+  
+  // Convert the map to a vector of groups
+  vector<vector<pair<int, int>>> groups;
+  for (const auto &entry : groupMap) {
+    groups.push_back(entry.second);
+  }
+  
+  return groups;
 }
 
 double computeFinalScore(const BoardState &state,
@@ -79,127 +153,64 @@ double computeFinalScore(const BoardState &state,
   double positioningScore = 0;
   double connectivityScore = 0;
 
-  vector<vector<bool>> visited(rows, vector<bool>(cols, false));
+  // Find all connected groups using disjoint sets
+  vector<vector<pair<int, int>>> groups = findConnectedGroups(state, rows, cols);
 
-  for (int i = 0; i < rows; i++) {
-    for (int j = 0; j < cols; j++) {
-      if (visited[i][j])
-        continue;
-      char ch = state.board[i][j];
-      if (ch == '.' || ch == '*')
-        continue;
+  for (const auto &group : groups) {
+    int groupSize = group.size();
+    bool hasGoal = false;
+    char groupColor = pieceColor(state.board[group[0].first][group[0].second]);
 
-      vector<pair<int, int>> group;
-      vector<pair<int, int>> stack;
-      stack.push_back({i, j});
-      visited[i][j] = true;
+    // Calculate position-based scoring for the group
+    double groupPositionScore = 0;
+    for (auto &cell : group) {
+      int r = cell.first, c = cell.second;
+      if (isGoal[r][c])
+        hasGoal = true;
+      if (isCorner(r, c, rows, cols))
+        groupPositionScore += 5.0; // 5.0 - avg 1782
+      else if (isEdge(r, c, rows, cols))
+        groupPositionScore += 9.5; // 9.5 - 1932 avg
+    }
 
-      while (!stack.empty()) {
-        auto [r, c] = stack.back();
-        stack.pop_back();
-        group.push_back({r, c});
-        const int dr[4] = {1, -1, 0, 0};
-        const int dc[4] = {0, 0, 1, -1};
-        for (int k = 0; k < 4; k++) {
-          int nr = r + dr[k], nc = c + dc[k];
-          if (nr < 0 || nr >= rows || nc < 0 || nc >= cols)
-            continue;
-          if (visited[nr][nc])
-            continue;
-          char neighbor = state.board[nr][nc];
-          if (neighbor == '.' || neighbor == '*')
-            continue;
-          if (pieceColor(neighbor) == pieceColor(ch)) {
-            visited[nr][nc] = true;
-            stack.push_back({nr, nc});
-          }
-        }
-      }
+    // Calculate connectivity score for the group
+    double groupConnectivityScore =
+        computeConnectivityScore(state, group, rows, cols);
 
-      int groupSize = group.size();
-      bool hasGoal = false;
-
-      // Calculate position-based scoring for the group
-      double groupPositionScore = 0;
-      for (auto &cell : group) {
-        int r = cell.first, c = cell.second;
-        if (isGoal[r][c])
-          hasGoal = true;
-        if (isCorner(r, c, rows, cols))
-          groupPositionScore += 2.0;
-        else if (isEdge(r, c, rows, cols))
-          groupPositionScore += 1.0;
-      }
-
-      // Calculate connectivity score for the group
-      double groupConnectivityScore =
-          computeConnectivityScore(state, group, rows, cols);
-
-      // Classify and score the group
-      if (hasGoal) {
-        if (groupSize >= minScore) {
-          numSets++;
-          numScorableTiles += groupSize;
-          scoringSetScore += groupSize * groupSize;
-          positioningScore +=
-              groupPositionScore * 1.6; // Higher weight for scoring groups // 1.5
-          connectivityScore += groupConnectivityScore * 1.5;
-        } else if (groupSize >= 3) {
-          nearScoringSetScore += groupSize * groupSize;
-          positioningScore += groupPositionScore * 1.2;
-          connectivityScore += groupConnectivityScore * 1.2;
-        } else {
-          nonScoringSetScore += groupSize * groupSize;
-          positioningScore += groupPositionScore;
-          connectivityScore += groupConnectivityScore;
-        }
+    // Classify and score the group
+    if (hasGoal) {
+      if (groupSize >= minScore) {
+        numSets++;
+        numScorableTiles += groupSize;
+        scoringSetScore += groupSize * groupSize * pow(1.1, max(0, groupSize - minScore)); //                  scoringSetScore += groupSize * groupSize;
+        positioningScore += groupPositionScore * 1.8; // Higher weight for scoring groups - 1932 avg
+        connectivityScore += groupConnectivityScore * 1.3; // 1.3 - 1966 avg
+      } else if (groupSize >= 3) {
+        nearScoringSetScore += groupSize * groupSize;
+        positioningScore += groupPositionScore * 1.2;
+        connectivityScore += groupConnectivityScore * 1.2;
       } else {
         nonScoringSetScore += groupSize * groupSize;
-        positioningScore +=
-            groupPositionScore * 0.8; // Lower weight for non-goal groups
-        connectivityScore += groupConnectivityScore * 0.8;
+        positioningScore += groupPositionScore;
+        connectivityScore += groupConnectivityScore;
       }
+    } else {
+      nonScoringSetScore += groupSize * groupSize;
+      positioningScore += groupPositionScore * 0.8;
+      connectivityScore += groupConnectivityScore * 0.8;
     }
   }
 
   // Combine sub-scores with empirical weightings
-  double finalScore = (numSets + numScorableTiles / 3.0) * 10000.0 +
-                      (scoringSetScore * 1.5 + nearScoringSetScore * 1.4 +
-                       nonScoringSetScore * 1.2) *
-                          150.0 +
-                      positioningScore * 75.0 + connectivityScore * 50.0;
+  double finalScore = (numSets + numScorableTiles / 3.0) * 8000.0 +
+                      (scoringSetScore * 1.3 + nearScoringSetScore * 1.3 +
+                       nonScoringSetScore * 1.1) *
+                          100.0 +
+                      positioningScore * 20.0 + connectivityScore * 10.0;
 
   return finalScore;
 }
 
-//------------------------------------------------------------------------------
-// Add random cells to fill the board (or parts of it) after a move.
-BoardState addRandomCells(const BoardState &state, int numCells,
-                          const string &colors, int rows, int cols) {
-  BoardState newState = state;
-  vector<pair<int, int>> emptyCells;
-
-  // Locate empty cells.
-  for (int i = 0; i < rows; i++) {
-    for (int j = 0; j < cols; j++) {
-      char ch = newState.board[i][j];
-      if (ch == '.' || ch == '*')
-        emptyCells.push_back({i, j});
-    }
-  }
-
-  int count = min((int)emptyCells.size(), numCells);
-  random_shuffle(emptyCells.begin(), emptyCells.end());
-  for (int k = 0; k < count; k++) {
-    int r = emptyCells[k].first;
-    int c = emptyCells[k].second;
-    int idx = rand() % colors.size();
-    newState.board[r][c] = colors[idx];
-  }
-  return newState;
-}
-
-//------------------------------------------------------------------------------
 // Simulate swapping two cells.
 BoardState simulateSwap(const BoardState &state, int r1, int c1, int r2,
                         int c2) {
@@ -208,95 +219,179 @@ BoardState simulateSwap(const BoardState &state, int r1, int c1, int r2,
   return newState;
 }
 
-//------------------------------------------------------------------------------
-// Simulate a scoring move: remove a connected group from the board.
+// Simulate a scoring move using disjoint sets
 BoardState simulateScoreMove(const BoardState &state, int startR, int startC,
-                             int rows, int cols,
-                             const vector<vector<bool>> &isGoal) {
+                           int rows, int cols,
+                           const vector<vector<bool>> &isGoal) {
   BoardState newState = state;
-  vector<vector<bool>> visited(rows, vector<bool>(cols, false));
-  char color = pieceColor(state.board[startR][startC]);
-
-  // DFS to remove the connected group.
-  vector<pair<int, int>> stack;
-  stack.push_back({startR, startC});
-  visited[startR][startC] = true;
-
-  while (!stack.empty()) {
-    auto [r, c] = stack.back();
-    stack.pop_back();
-
-    newState.board[r][c] = (isGoal[r][c] ? '*' : '.');
-
-    const int dr[] = {1, -1, 0, 0};
-    const int dc[] = {0, 0, 1, -1};
-    for (int k = 0; k < 4; k++) {
-      int nr = r + dr[k], nc = c + dc[k];
-      if (nr < 0 || nr >= rows || nc < 0 || nc >= cols)
-        continue;
-      if (visited[nr][nc])
-        continue;
-      char ch = state.board[nr][nc];
-      if (ch == '.' || ch == '*')
-        continue;
-      if (pieceColor(ch) == color) {
-        visited[nr][nc] = true;
-        stack.push_back({nr, nc});
+  char targetColor = pieceColor(state.board[startR][startC]);
+  
+  // Create disjoint set
+  DisjointSetByRankWPC dset(rows * cols);
+  
+  // First pass: build the disjoint set of connected components
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      if (pieceColor(state.board[i][j]) != targetColor) continue;
+      
+      int currentIdx = cellToIndex(i, j, cols);
+      
+      // Check all four neighbors
+      const int dr[] = {0, 1, 0, -1};
+      const int dc[] = {1, 0, -1, 0};
+      
+      for (int k = 0; k < 4; k++) {
+        int ni = i + dr[k];
+        int nj = j + dc[k];
+        
+        if (ni < 0 || ni >= rows || nj < 0 || nj >= cols) continue;
+        
+        if (pieceColor(state.board[ni][nj]) == targetColor) {
+          int neighborIdx = cellToIndex(ni, nj, cols);
+          dset.Union(dset.Find(currentIdx), dset.Find(neighborIdx));
+        }
       }
     }
   }
+  
+  // Find the representative of the group containing the startR, startC cell
+  int startIdx = cellToIndex(startR, startC, cols);
+  int groupRep = dset.Find(startIdx);
+  
+  // Remove all cells in the same group
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      if (pieceColor(state.board[i][j]) != targetColor) continue;
+      
+      int currentIdx = cellToIndex(i, j, cols);
+      if (dset.Find(currentIdx) == groupRep) {
+        newState.board[i][j] = (isGoal[i][j] ? '*' : '.');
+      }
+    }
+  }
+  
   return newState;
 }
 
-//------------------------------------------------------------------------------
-// Move selection function using the final aggregate score.
-// It generates candidate moves (both score and swap moves), evaluates each
-// outcome using computeFinalScore(), and returns the move with the best score.
-Move chooseMoveExpectimax(const BoardState &state,
-                          const vector<vector<bool>> &isGoal, int minScore,
-                          int rows, int cols, const string &colors,
-                          int samples) {
+// Update the analyzeBoard function to use disjoint sets
+vector<GroupInfo> analyzeBoard(const vector<vector<char>> &board,
+                              const vector<vector<bool>> &isGoal,
+                              int minScore, int rows, int cols) {
+  vector<GroupInfo> result;
+  
+  // Create disjoint set
+  DisjointSetByRankWPC dset(rows * cols);
+  unordered_map<int, vector<pair<int, int>>> groupMap;
+  unordered_map<int, char> groupColors;
+  
+  // First pass: Union adjacent cells of the same color
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      char currentPiece = board[i][j];
+      if (currentPiece == '.' || currentPiece == '*') continue;
+      
+      int currentIdx = cellToIndex(i, j, cols);
+      char currentColor = pieceColor(currentPiece);
+      
+      // Check all four neighbors
+      const int dr[] = {0, 1, 0, -1};
+      const int dc[] = {1, 0, -1, 0};
+      
+      for (int k = 0; k < 4; k++) {
+        int ni = i + dr[k];
+        int nj = j + dc[k];
+        
+        if (ni < 0 || ni >= rows || nj < 0 || nj >= cols) continue;
+        
+        char neighborPiece = board[ni][nj];
+        if (neighborPiece == '.' || neighborPiece == '*') continue;
+        
+        char neighborColor = pieceColor(neighborPiece);
+        if (neighborColor == currentColor) {
+          int neighborIdx = cellToIndex(ni, nj, cols);
+          dset.Union(dset.Find(currentIdx), dset.Find(neighborIdx));
+        }
+      }
+    }
+  }
+  
+  // Second pass: Collect cells belonging to each group and record group colors
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      char currentPiece = board[i][j];
+      if (currentPiece == '.' || currentPiece == '*') continue;
+      
+      int currentIdx = cellToIndex(i, j, cols);
+      int groupRep = dset.Find(currentIdx);
+      
+      groupMap[groupRep].push_back({i, j});
+      groupColors[groupRep] = pieceColor(currentPiece);
+    }
+  }
+  
+  // Third pass: Analyze each group
+  for (const auto &entry : groupMap) {
+    const vector<pair<int, int>> &group = entry.second;
+    int groupSize = group.size();
+    int groupRep = entry.first;
+    char groupColor = groupColors[groupRep];
+    
+    // Check if group contains a goal cell
+    bool hasGoal = false;
+    int goalR = -1, goalC = -1;
+    
+    for (const auto &cell : group) {
+      int r = cell.first, c = cell.second;
+      if (isGoal[r][c]) {
+        hasGoal = true;
+        goalR = r;
+        goalC = c;
+        break;
+      }
+    }
+    
+    // Only include groups that have a goal cell and meet the minimum score requirement
+    if (hasGoal && groupSize >= minScore) {
+      GroupInfo info;
+      // Note: Assuming GroupInfo only contains size and position, not color
+      info.size = groupSize;
+      info.goalR = goalR;
+      info.goalC = goalC;
+      result.push_back(info);
+    }
+  }
+  
+  return result;
+}
+
+// Simplified move selection without future simulation
+Move chooseMove(const BoardState &state, const vector<vector<bool>> &isGoal, 
+                int minScore, int rows, int cols) {
   // Dynamic threshold based on game phase
   int emptyCells = getEmptyCellCount(state, rows, cols);
-  int MIN_GROUP_SIZE_FOR_IMMEDIATE = (emptyCells < 20) ? 5 : // :
-                                         (emptyCells < 40) ? 5
-                                     : (emptyCells < 60)
-                                         ? 6
-                                         : 7; // Adjusted for late game
-  constexpr double PRUNING_THRESHOLD = -1000.0;
-
+  int MIN_GROUP_SIZE_FOR_IMMEDIATE = 5;
+  
   struct MoveCandidate {
     Move move;
     double value;
-    BoardState nextState;
   };
   vector<MoveCandidate> candidates;
-
-  // Score moves consideration
-  vector<GroupInfo> groups =
-      analyzeBoard(state.board, isGoal, minScore, rows, cols);
+  
+  // First, consider all scoring moves
+  vector<GroupInfo> groups = analyzeBoard(state.board, isGoal, minScore, rows, cols);
   for (const auto &g : groups) {
     if (g.size >= MIN_GROUP_SIZE_FOR_IMMEDIATE) {
-      // Add extra verification for very early game
-      if (emptyCells > 60 && g.size <= 5) {
-        // Don't immediately take small groups in early game
-        continue;
-      }
+      // Take immediate large scores without further evaluation
       return Move{SCORE, g.goalR, g.goalC, 0, 0};
     }
-
-    BoardState nextState =
-        simulateScoreMove(state, g.goalR, g.goalC, rows, cols, isGoal);
-    double quickVal =
-        computeFinalScore(nextState, isGoal, minScore, rows, cols);
-
-    if (quickVal > PRUNING_THRESHOLD) {
-      candidates.push_back(
-          {Move{SCORE, g.goalR, g.goalC, 0, 0}, quickVal, nextState});
-    }
+    
+    // Evaluate the move by seeing how good the board would be after scoring
+    BoardState nextState = simulateScoreMove(state, g.goalR, g.goalC, rows, cols, isGoal);
+    double moveValue = computeFinalScore(nextState, isGoal, minScore, rows, cols);
+    candidates.push_back({Move{SCORE, g.goalR, g.goalC, 0, 0}, moveValue});
   }
-
-  // Swap moves consideration
+  
+  // Consider swap moves (prioritizing corner/edge pieces)
   vector<pair<int, int>> validPieces;
   for (int r = 0; r < rows; r++) {
     for (int c = 0; c < cols; c++) {
@@ -304,41 +399,42 @@ Move chooseMoveExpectimax(const BoardState &state,
         validPieces.emplace_back(r, c);
     }
   }
-
-  // Prioritize corner and edge pieces for swaps
+  
+  // Prioritize corner and edge pieces
   sort(validPieces.begin(), validPieces.end(),
        [rows, cols](const pair<int, int> &a, const pair<int, int> &b) {
          bool aCorner = isCorner(a.first, a.second, rows, cols);
          bool bCorner = isCorner(b.first, b.second, rows, cols);
-         if (aCorner != bCorner)
-           return aCorner > bCorner;
-
+         if (aCorner != bCorner) return aCorner > bCorner;
+         
          bool aEdge = isEdge(a.first, a.second, rows, cols);
          bool bEdge = isEdge(b.first, b.second, rows, cols);
          return aEdge > bEdge;
        });
-
-  for (size_t i = 0; i < validPieces.size(); i++) {
-    for (size_t j = i + 1; j < validPieces.size(); j++) {
+  
+  // Evaluate promising swaps (limit to reasonable number to avoid excessive computation)
+  const int MAX_SWAP_CANDIDATES = 500000; //50k high score
+  int swapsChecked = 0;
+  
+  for (size_t i = 0; i < validPieces.size() && swapsChecked < MAX_SWAP_CANDIDATES; i++) {
+    for (size_t j = i + 1; j < validPieces.size() && swapsChecked < MAX_SWAP_CANDIDATES; j++) {
       int r1 = validPieces[i].first, c1 = validPieces[i].second;
       int r2 = validPieces[j].first, c2 = validPieces[j].second;
-
+      
       char cell1 = state.board[r1][c1];
       char cell2 = state.board[r2][c2];
       if (pieceColor(cell1) == pieceColor(cell2))
         continue;
-
+      
+      swapsChecked++;
       BoardState swapState = simulateSwap(state, r1, c1, r2, c2);
-      double quickVal =
-          computeFinalScore(swapState, isGoal, minScore, rows, cols);
-
-      if (quickVal > PRUNING_THRESHOLD) {
-        candidates.push_back({Move{SWAP, r1, c1, r2, c2}, quickVal, swapState});
-      }
+      double moveValue = computeFinalScore(swapState, isGoal, minScore, rows, cols);
+      
+      candidates.push_back({Move{SWAP, r1, c1, r2, c2}, moveValue});
     }
   }
-
-  // Fallback handling remains the same
+  
+  // Fallback handling for empty board or no good moves
   if (candidates.empty()) {
     for (size_t i = 0; i < validPieces.size(); i++) {
       for (size_t j = i + 1; j < validPieces.size(); j++) {
@@ -347,45 +443,20 @@ Move chooseMoveExpectimax(const BoardState &state,
         return Move{SWAP, r1, c1, r2, c2};
       }
     }
-    return Move{SWAP, 0, 0, 0, 0};
+    return Move{SWAP, 0, 0, 0, 0}; // Last resort
   }
-
-  // Sort and evaluate top candidates
-  sort(candidates.begin(), candidates.end(),
-       [](const MoveCandidate &a, const MoveCandidate &b) {
-         return a.value > b.value;
-       });
-
-  constexpr int MAX_DETAILED_CANDIDATES = 10;
-  if (candidates.size() > MAX_DETAILED_CANDIDATES)
-    candidates.resize(MAX_DETAILED_CANDIDATES);
-
-  // Monte Carlo sampling with adaptive sample sizes
-  for (auto &candidate : candidates) {
-    double totalVal = 0;
-    int actualSamples =
-        (candidate.move.type == SCORE)
-            ? samples
-            : (emptyCells < 30 ? samples * 3
-                               : samples * 2); // More samples in late game
-
-    for (int s = 0; s < actualSamples; s++) {
-      int addCells = (candidate.move.type == SCORE) ? 3 : 5;
-      BoardState outcome =
-          addRandomCells(candidate.nextState, addCells, colors, rows, cols);
-      double eval = computeFinalScore(outcome, isGoal, minScore, rows, cols);
-      // Progressive sampling weights
-      double weight = (s < samples) ? 1.0 : (s < samples * 2) ? 0.7 : 0.5;
-      totalVal += eval * weight;
-    }
-    candidate.value = totalVal / (actualSamples * 0.8); // Normalized evaluation
-  }
-
-  auto bestCandidate =
-      max_element(candidates.begin(), candidates.end(),
-                  [](const MoveCandidate &a, const MoveCandidate &b) {
-                    return a.value < b.value;
-                  });
-
+  
+  // Find best move
+  auto bestCandidate = max_element(candidates.begin(), candidates.end(),
+                                  [](const MoveCandidate &a, const MoveCandidate &b) {
+                                    return a.value < b.value;
+                                  });
+  
   return bestCandidate->move;
+}
+
+// Main function that interfaces with the game system
+Move chooseBestMove(const BoardState &state, const vector<vector<bool>> &isGoal,
+                    int minScore, int rows, int cols, const string &colors) {
+  return chooseMove(state, isGoal, minScore, rows, cols);
 }

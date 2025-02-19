@@ -55,24 +55,33 @@ BoardState simulateScoreMove(const BoardState& state,
                             const std::vector<std::vector<bool>>& isGoal);
 
 /**
- * Chooses the best move using expectimax search with sampling.
- * Considers both swap and score moves, simulates random piece additions,
- * and evaluates resulting positions.
+ * Chooses the best move based on current board evaluation.
+ * Considers both swap and score moves and selects the one that 
+ * maximizes the board position quality without simulating random future pieces.
  * 
- * Search process:
- * 1. Generates all possible moves
- * 2. Quick evaluation to prune clearly bad moves
- * 3. Detailed sampling of promising moves
- * 4. Returns move with highest expected value
+ * Strategy:
+ * 1. Immediately scores groups above threshold size
+ * 2. Evaluates each possible move based on resulting board quality
+ * 3. Prioritizes pieces in strategic positions (corners/edges)
  * 
  * @param state Current board state
  * @param isGoal Matrix indicating which cells are goal cells
  * @param minScore Minimum group size required for scoring
  * @param rows Number of rows in the board
  * @param cols Number of columns in the board
- * @param colors String containing possible colors for random pieces
- * @param samples Number of random samples to evaluate for each move (default 10)
+ * @param colors String containing possible colors
  * @return The chosen Move
+ */
+Move chooseBestMove(const BoardState& state, 
+                   const std::vector<std::vector<bool>>& isGoal,
+                   int minScore, 
+                   int rows, 
+                   int cols, 
+                   const std::string& colors);
+
+/**
+ * Legacy function for backward compatibility.
+ * Calls chooseBestMove internally.
  */
 Move chooseMoveExpectimax(const BoardState& state, 
                          const std::vector<std::vector<bool>>& isGoal,

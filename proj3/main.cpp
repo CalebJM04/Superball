@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
     // Initialize random seed
-    srand(time(NULL));
+    // srand(time(NULL));
 
     // Check command line arguments
     if (argc < 5) {
@@ -43,6 +43,9 @@ int main(int argc, char** argv) {
         cerr << "Error: Must specify at least one color\n";
         return 1;
     }
+
+    int seed = (argc >= 6) ? atoi(argv[5]) : time(NULL);
+    srand(seed);
 
     // Read board (one line per row)
     vector<string> board;
@@ -79,7 +82,8 @@ int main(int argc, char** argv) {
     state.board = board;
 
     // Choose and output the best move
-    Move chosen = chooseMoveExpectimax(state, isGoal, minScore, rows, cols, colors, 300); // 500 was best
+    // Choose and output the best move
+Move chosen = chooseBestMove(state, isGoal, minScore, rows, cols, colors); // 500 was best
     
     // Output the chosen move
     if (chosen.type == SCORE) {
