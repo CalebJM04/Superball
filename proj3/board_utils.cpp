@@ -23,6 +23,82 @@ static int colorToPoints(char color) {
     }
 }
 
+// Updated analyzeBoard function to handle vector<vector<char>> board type
+vector<GroupInfo> analyzeBoard(const vector<vector<char>>& board, 
+                             const vector<vector<bool>>& isGoal,
+                             int minScore, int rows, int cols) {
+    // Create disjoint set (one element per cell)
+    DisjointSetByRankWPC ds(rows * cols);
+    
+    // Connect adjacent same-colored pieces
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            char ch = board[i][j];
+            if (ch == '.' || ch == '*') continue;
+            int index = i * cols + j;
+            
+            // Check all four neighbors
+            const int dr[] = {0, 1, 0, -1};
+            const int dc[] = {1, 0, -1, 0};
+            
+            for (int k = 0; k < 4; k++) {
+                int ni = i + dr[k];
+                int nj = j + dc[k];
+                
+                if (ni < 0 || ni >= rows || nj < 0 || nj >= cols) continue;
+                
+                char neighborPiece = board[ni][nj];
+                if (neighborPiece == '.' || neighborPiece == '*') continue;
+                
+                char neighborColor = pieceColor(neighborPiece);
+                if (neighborColor == pieceColor(ch)) {
+                    int neighborIdx = ni * cols + nj;
+                    ds.Union(ds.Find(index), ds.Find(neighborIdx));
+                }
+            }
+        }
+    }
+    
+    // Analyze connected components
+    vector<int> compSize(rows * cols, 0);
+    vector<bool> compHasGoal(rows * cols, false);
+    vector<int> goalR(rows * cols, -1);
+    vector<int> goalC(rows * cols, -1);
+    
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            char ch = board[i][j];
+            if (ch == '.' || ch == '*') continue;
+            int index = i * cols + j;
+            int root = ds.Find(index);
+            compSize[root]++;
+            if (isGoal[i][j]) {
+                compHasGoal[root] = true;
+                goalR[root] = i;
+                goalC[root] = j;
+            }
+        }
+    }
+    
+    // Build group info for qualifying components
+    vector<GroupInfo> groups;
+    for (int i = 0; i < rows * cols; i++) {
+        if (compSize[i] >= minScore && compHasGoal[i] && ds.Find(i) == i) {
+            GroupInfo info;
+            info.root = i;
+            info.size = compSize[i];
+            info.hasGoal = true;
+            if (goalR[i] != -1 && goalC[i] != -1) {
+                info.goalR = goalR[i];
+                info.goalC = goalC[i];
+            }
+            groups.push_back(info);
+        }
+    }
+    return groups;
+}
+
+// Original analyzeBoard function for vector<string> board type
 vector<GroupInfo> analyzeBoard(const vector<string>& board, 
                              const vector<vector<bool>>& isGoal,
                              int minScore, int rows, int cols) {
